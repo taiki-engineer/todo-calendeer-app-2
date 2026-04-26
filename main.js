@@ -43,7 +43,25 @@ function renderCalender() {
         if (selectedDate === dateStr) {
             div.classList.add("selectedDate")
         };
+
+        div.addEventListener("click", () => {
+            selectedDate = dateStr;
+
+            const format = dateObj.toLocaleDateString("ja-JP", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                weekday: "short"
+            });
+
+            document.getElementById("selectedDate").textContent = format;
+
+            renderCalender();
+            renderTask();
+        });
+
         
+        dates.appendChild(div);
         
     };
     
