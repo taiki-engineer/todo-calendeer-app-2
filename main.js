@@ -69,6 +69,24 @@ function renderCalender() {
    
     
 };
+
+function renderTask() {
+    const list = document.getElementById("taskList")
+    list.innerHTML = "";
+
+     const filtered = memos.filter(m => m.date === selectedDate);
+
+    filtered.forEach((memo, index) => {
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+            ${memo.text}
+            <button class="delete-btn" onclick="deleteTask(${index})">🗑️</button>
+        `;
+        list.appendChild(li);
+    });
+};
+
 renderCalender();
 
 
