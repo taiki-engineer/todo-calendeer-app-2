@@ -87,6 +87,22 @@ function renderTask() {
     });
 };
 
+document.getElementById("addBtn").addEventListener("click", () =>{
+    const input = document.getElementById("taskInput");
+
+    if (!selectedDate || input.value === "") return;
+    
+    memos.push({
+        date: selectedDate,
+        text: input.value
+    });
+
+    localStorage.setItem("memos", JSON.stringify(memos));
+
+    input.value = "";
+    renderTasks();
+});
+
 renderCalender();
 
 
