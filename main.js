@@ -103,6 +103,17 @@ document.getElementById("addBtn").addEventListener("click", () =>{
     renderTasks();
 });
 
+function deleteTask(index) {
+    const filtered = memos.filter(m => m.date === selectedDate);
+    const target = filtered[index];
+
+    memos = memos.filter(m => m !== target);
+
+    localStorage.setItem("memos", JSON.stringify(memos));
+    renderTask();
+
+};
+
 renderCalender();
 
 
